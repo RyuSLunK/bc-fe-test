@@ -1,1 +1,1 @@
-var app = angular.module('bookshelf')
+var app = angular.module('bookshelf',[]);

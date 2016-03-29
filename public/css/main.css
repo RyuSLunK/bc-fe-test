@@ -1,0 +1,53 @@
+html{
+  font-family: 'Roboto';
+  background-color:lightgrey;
+}
+header {
+    background-color: magenta;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+header > h1{
+  margin-left: 20px;
+}
+main{margin-top:25%;}
+button{
+  font-weight:bold;
+  background-color:transparent;
+  border:0px solid black;
+  text-transform:uppercase;
+  color:black;
+}
+button + button{
+  color:gold;
+}
+article{
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px black;
+  margin: 10px;
+  width: 45%;
+  display: inline-block;
+
+}
+article > img{
+  float:left;
+}
+nav li{
+  list-style: none;
+  display: inline-block;
+  margin-right: 20px;
+}
+@media only screen and (max-width: 1040px){
+  nav li{display: none;}
+  nav{
+    width: 25px;
+    height: 25px;
+    background-image: url('/css/icons/ic_menu_24px.svg');
+  background-repeat: no-repeat;
+}
+  nav.open{background-image: url('/css/icons/ic_close_24px.svg');}
+  nav.open li{display: block;}
+}

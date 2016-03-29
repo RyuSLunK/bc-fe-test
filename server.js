@@ -1,23 +1,26 @@
-var express = require('express');
-var fs = require('fs');
+var express = require('express'),
+  fs = require('fs'),
+  path = require('path'),
+  https = require('https'),
+  http = require('http'),
+  bodyParser = require('body-parser');
 var app = express();
-var http = require('http').Server(app);
 //var io = require('socket.io')(http);
-var path = require('path');
-var https = require('https');
-var bodyParser = require('body-parser');
+
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-//console.log(path.join(__dirname, '/public/')); 	
-//app.use(express.static(path.join(__dirname, '/public/')));
+
 app.get('/', function(req, res){
   res.render('index.html')
 });
-
+app.get('/books', function(request, response){
+  var bookFile = fs.readFileSync(__dirname + '/data/books.json');
+  response.send(JSON.parse(bookFile))
+});
 /*io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('disconnect', function(){
